@@ -13,10 +13,6 @@ export default {
       type: String,
       required: true,
     },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
     size: {
       type: String,
       validator: function (value) {
@@ -24,7 +20,10 @@ export default {
       },
     },
     backgroundColor: {
-      type: String,
+        type: String,
+    },
+    textColor: {
+        type: String,
     },
   },
 
@@ -35,12 +34,11 @@ export default {
     return {
       classes: computed(() => ({
         'btn': true,
-        'btn-primary': props.primary,
-        'btn-secondary': !props.primary,
         [`btn-${props.size || 'md'}`]: true,
       })),
       style: computed(() => ({
         backgroundColor: props.backgroundColor,
+        color: props.textColor,
       })),
       onClick() {
         emit('click');
@@ -49,5 +47,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
